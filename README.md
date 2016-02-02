@@ -1,1 +1,1 @@
-# glitchedpixelsmc.github.io
+# GlitchedPixelsMC.github.io
