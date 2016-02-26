@@ -16,32 +16,7 @@
     <meta name="twitter:site" content="@mcglitchedpixel" />
     <meta name="twitter:card" content="summary" />
 	<!--<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>-->
-<script>function preloader() {
-	if (document.images) {
-		var img1 = new Image();
-		var img2 = new Image();
-		var img3 = new Image();
-
-		img1.src = "img/webbcraft.png";
-		img2.src = "img/contact.jpg";
-		img3.src = "background.png";
-	}
-}
-function addLoadEvent(func) {
-	var oldonload = window.onload;
-	if (typeof window.onload != 'function') {
-		window.onload = func;
-	} else {
-		window.onload = function() {
-			if (oldonload) {
-				oldonload();
-			}
-			func();
-		}
-	}
-}
-addLoadEvent(preloader);</script>	
-<style>
+	<style>
 		body{
 			font-family: Verdana,sans-serif;
 			display: flex;
