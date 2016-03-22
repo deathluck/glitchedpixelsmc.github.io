@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head profile="http://twitter.com/MCGlitchedPixel" >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="twitter:site" content="@mcglitchedpixel" />
+    <title>Mojang Status Checker Minecraft - GlitchedPixels</title>
+    <script>
+    function pulldata() {
+      xmlhttp=new XMLHttpRequest();
+      xmlhttp.open("GET", "https://status.mojang.com/check", false);
+      xmlhttp.send();
+      var data = JSON.parse(xmlhttp.responseText);
+}
+</script>
+</head>
+<body>
+</body>
+</html>
