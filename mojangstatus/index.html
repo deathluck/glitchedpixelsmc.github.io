@@ -9,7 +9,33 @@
     <script src="https://glitchedpixelsmc.github.io/bootstrap/bootstrap.min.js"></script>
     <link rel='stylesheet' href='https://glitchedpixelsmc.github.io/bootstrap/bootstrap.min.css'>
     <link rel='stylesheet' href='https://glitchedpixelsmc.github.io/bootstrap/css/bootstrap-material-design.min.css'>
+    <link rel='stylesheet' href='https://glitchedpixelsmc.github.io/bootstrap/css/ripples.min.css'>
     <script src='https://glitchedpixelsmc.github.io/bootstrap/css/ripples.min.css'>
+    <script src="https://mcapi.us/scripts/minecraft.js"></script>
+    <style>.card-2 {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}.card-2:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}.card-insert {
+  padding: 1rem;
+}
+.card {
+  background: #fff;
+  border-radius: 2px;
+  display: block;
+  float: left;
+  height: 100%;
+  position: relative;
+  width: 100%;
+
+}
+.input1 {
+margin:16px;
+}
+.input2 {
+margin:16px;
+}
+</style>
     <script>
     function pulldata() {
 
@@ -17,6 +43,20 @@
 </script>
 </head>
 <body>
-
+  <div class='card-insert'>
+  <div class="card card-2">
+    <br>
+    <center>Server Status Checker</center>
+    <div class="form-group label-floating input1">
+  <label class="control-label" for="focusedInput1">Server IP</label>
+  <input class="form-control" id="focusedInput1" type="text">
+</div>
+<div class="form-group label-floating input2">
+  <label class="control-label" for="focusedInput2">Port</label>
+  <input class="form-control" id="focusedInput2" type="text">
+  <p class="help-block">The Port Is not needed for 25565</p>
+</div>
+    </div>
+    <div>
 </body>
 </html>
