@@ -10,6 +10,7 @@
     <link href="https://cdn.muicss.com/mui-0.4.7/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.muicss.com/mui-0.4.7/js/mui.min.js"></script>
     <script src='https://glitchedpixelsmc.github.io/mojangstatus/MinecraftColorCodes.3.5.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <!-- custom font css -->
     <style>
       body {
@@ -17,6 +18,16 @@
       }
     </style>
     <script>
+    function Get(yourUrl){
+var Httpreq = new XMLHttpRequest(); // a new request
+Httpreq.open("GET",yourUrl,false);
+Httpreq.send(null);
+return Httpreq.responseText;
+
+    }
+function active() {
+  if (document.getElementById("rawAddress").value.length > 0) {document.getElementById("submitButton").removeAttribute("disabled");}
+else {document.getElementById("submitButton").setAttribute("disabled", "");}}
 function pullData() {
 var rawAddress = document.getElementById("rawAddress").value;
 if ( rawAddress.indexOf(":") > -1 ) {
@@ -27,6 +38,11 @@ if ( rawAddress.indexOf(":") > -1 ) {
 } else {
   var url = 'https://mcapi.us/server/status?ip=' + rawAddress;
 }
+  var JsonData = JSON.parse(Get(url));
+  var errorCheck = JsonData.error;
+  if (errorCheck) {
+
+  }
 }
 </script>
   </head>
@@ -40,9 +56,11 @@ if ( rawAddress.indexOf(":") > -1 ) {
     <form>
       <legend></legend>
     <div class="mui-textfield">
-      <input type="text" placeholder="Server Address" id='rawAddress'>
+      <input type="text" placeholder="Server Address" id='rawAddress' onkeydown='active()' onkeyup='active()' onkeypress='active()'>
     </div>
-    <button type="submit" class="mui-btn mui-btn--raised" onclick='pullData()'>Submit</button>
+
+    <button type="submit" class="mui-btn mui-btn--raised" id='submitButton' onclick='pullData()' disabled>Submit</button>
+
   </form>
 </div>
   </div>
