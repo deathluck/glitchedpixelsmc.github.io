@@ -23,12 +23,11 @@ if ( rawAddress.indexOf(":") > -1 ) {
   var n = rawAddress.lastIndexOf(':');
   var port = rawAddress.substring(n + 1);
   var address = rawAddress.slice(0, rawAddress.indexOf(":"));
-  console.log(port);
-  console.log(address);
+  var url = 'https://mcapi.us/server/status?ip=' + rawAddress + '&port=' + port;
 } else {
-  var url = rawAddress;
-  console.log(url);
-}}
+  var url = 'https://mcapi.us/server/status?ip=' + rawAddress;
+}
+}
 </script>
   </head>
   <body>
