@@ -15,19 +15,22 @@
     <style>
       body {
         font-family: "Roboto", "Helvetica Neue", Helvetica, Arial;
+        background: #eee;
+        height: 100%;
       }
     </style>
     <script>
-    function Get(yourUrl){
+
+function active() {
+  if (document.getElementById("rawAddress").value.length > 0) {document.getElementById("submitButton").removeAttribute("disabled");}
+else {document.getElementById("submitButton").setAttribute("disabled", "");}}
+function Get(yourUrl){
 var Httpreq = new XMLHttpRequest(); // a new request
 Httpreq.open("GET",yourUrl,false);
 Httpreq.send(null);
 return Httpreq.responseText;
 
-    }
-function active() {
-  if (document.getElementById("rawAddress").value.length > 0) {document.getElementById("submitButton").removeAttribute("disabled");}
-else {document.getElementById("submitButton").setAttribute("disabled", "");}}
+}
 function pullData() {
 var rawAddress = document.getElementById("rawAddress").value;
 if ( rawAddress.indexOf(":") > -1 ) {
@@ -38,11 +41,16 @@ if ( rawAddress.indexOf(":") > -1 ) {
 } else {
   var url = 'https://mcapi.us/server/status?ip=' + rawAddress;
 }
-  var JsonData = JSON.parse(Get(url));
-  var errorCheck = JsonData.error;
-  if (errorCheck) {
-
+  console.log(JSON.parse(Get(url)));
+  var errorCheck = JSON.parse(Get(url)).error;
+  console.log(errorCheck);
+  if (errorCheck == "") {
+console.log("Json Ok")
+$("#errorBox").html("");
+  } if (errorCheck != "") {
+    document.getElementById('errorBox').innerHTML = "<h1>" + errorCheck + "<h1>";
   }
+  return false;
 }
 </script>
   </head>
@@ -56,13 +64,14 @@ if ( rawAddress.indexOf(":") > -1 ) {
     <form>
       <legend></legend>
     <div class="mui-textfield">
-      <input type="text" placeholder="Server Address" id='rawAddress' onkeydown='active()' onkeyup='active()' onkeypress='active()'>
+      <input type="text" placeholder="Server Address" id='rawAddress' onkeydown='active()' onkeyup='active()' onkeypress="active()">
     </div>
 
-    <button type="submit" class="mui-btn mui-btn--raised" id='submitButton' onclick='pullData()' disabled>Submit</button>
+    <button type="button" class="mui-btn mui-btn--raised" id='submitButton' onclick='pullData()' disabled>Submit</button>
 
   </form>
 </div>
+<center><div id='errorBox'></div></center>
   </div>
   </body>
 </html>
